@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Styled Containers</title>
+<style>
+  /* CSS styles for container */
+  body {
+    margin: 0;
+    padding: 0;
+    background-color:rgb(37, 142, 139);
+  }
+
+  .footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px
+  }
+
+  .container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: green#f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+
+  .container:hover {
+    background-color: #ccc; /* Change background color on hover */
+  }
+
+  /* CSS styles for individual boxes */
+  .web_technology_quiz {
+    background-color: #3498db;
+    color: #fff;
+  }
+
+  .articleee {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+
+  .aboutt {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+
+  /* Hide link text */
+  .container a {
+    color: transparent;
+  }
+
+  /* Show link text on hover */
+  .container:hover a {
+    color: #000;
+  }
+</style>
+</head>
+<body>
+
+<!-- Footer -->
+<div class="footer">
+  <h1>Welcome to my page</h1>
+</div>
+
+<!-- Container for Web Technology Quiz -->
+<div class="container web_technology_quiz" onclick="window.location.href='web_technology_quizz.html';">
+  <h2>Web Technology Quiz</h2>
+  <p>This is the Web Technology Quiz container</p>
+  <a href="web_technology_quizz.html">Web Technology Quiz</a>
+</div>
+
+<!-- Container for Articleee -->
+<div class="container articleee" onclick="window.location.href='Articleee.html';">
+  <h2>Articleee</h2>
+  <p>This is the Articleee container.</p>
+  <a href="Articleee.html">Article</a>
+</div>
+
+<!-- Container for Aboutt -->
+<div class="container aboutt" onclick="window.location.href='aboutt.html';">
+  <h2>Aboutt</h2>
+  <p>This is the Aboutt container</p>
+  <a href="aboutt.html">About</a>
+</div>
+
+</body>
+</html>

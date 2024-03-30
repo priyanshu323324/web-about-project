@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Technology Quiz</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      h1, h2, h3 {
+        text-align: center;
+        color: #007bff;
+      }
+      
+      p {
+        margin-bottom: 20px;
+      }
+      
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      li {
+        margin-bottom: 10px;
+      }
+      
+      .quiz-question {
+        margin-bottom: 20px;
+      }
+      
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .btn:hover {
+        background-color: #0056b3;
+      }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Quiz Page -->
+  <section id="quiz">
+    <h1>Web Technology Quiz</h1>
+    <div id="quiz-questions"></div>
+    <button id="submit-quiz" class="btn">Submit Quiz</button>
+  </section>
+
+  <!-- Score and Answers Page -->
+  <section id="score-and-answers" style="display: none;">
+    <h1>Quiz Results</h1>
+    <p>Your score: <span id="quiz-score"></span></p>
+    <div id="quiz-feedback"></div>
+    <button id="try-again" class="btn">Try Again</button>
+    <!-- Navigation link to About Me page -->
+    <p><a href="aboutt.html">About Me</a></p>
+    <!-- Navigation link to Understanding Web Fundamentals article -->
+    <p><a href="Articleee.html">Understanding Web Fundamentals</a></p>
+  </section>
+</div>
+
+<script>
+   // Define quiz questions with correct answers
+   const quizQuestions = [
+   {
+     question: "What is the function of a web browser?",
+     options: ["To view web pages", "To send emails", "To create web pages"],
+     correctAnswer: 0
+   },
+   {
+     question: "What is a web server?",
+     options: ["A computer program that serves web pages to users", "A browser plugin", "A social media platform"],
+     correctAnswer: 0
+   },
+   {
+     question: "What is the difference between Internet and Intranet?",
+     options: ["Internet is a global network accessible to everyone, while Intranet is a private network accessible only to an organization's members", "There is no difference", "Intranet is a global network accessible to everyone, while Internet is a private network accessible only to an organization's members"],
+     correctAnswer: 0
+   },
+   {
+     question: "Which CSS property is used to change the text color of an element?",
+     options: ["color", "text-color","font-color"],
+     correctAnswer: 0
+   },
+   {
+     question: "Which programming language is not used for web development?",
+     options: ["python","java","c++"],
+     correctAnswer: 0
+   },
+   {
+     question: "What does CSS stand for?",
+     options: ["Cascading style sheets","Computer style sheets","Creative style sheets"],
+   },
+   {
+     question: "Which symbol is used to access the ID selector in CSS?",
+     options: ["#",".","$"],
+     correctAnswer: 0
+   },
+   {
+     question: "What does JavaScript primarily provide?",
+     options: ["Functionality","Styling","Structure"],
+     correctAnswer: 0
+   },
+   {
+     question: "What is the difference between Internet and Intranet?",
+     options: ["Internet is a global network accessible to everyone, while Intranet is a private network accessible only to an organization's members", "There is no difference", "Intranet is a global network accessible to everyone, while Internet is a private network accessible only to an organization's members"],
+     correctAnswer: 0
+   },
+   {
+     question: "What is the difference between Internet and Intranet?",
+     options: ["Internet is a global network accessible to everyone, while Intranet is a private network accessible only to an organization's members", "There is no difference", "Intranet is a global network accessible to everyone, while Internet is a private network accessible only to an organization's members"],
+     correctAnswer: 0
+   },
+ ];
+
+ // Display quiz questions
+ const quizQuestionsContainer = document.getElementById("quiz-questions");
+ quizQuestions.forEach((question, index) => {
+   const questionElement = document.createElement("div");
+   questionElement.classList.add("quiz-question");
+   questionElement.innerHTML = `
+     <h3>Question ${index + 1}</h3>
+     <p>${question.question}</p>
+     <ul>
+       ${question.options.map((option, idx) => `<li><input type="radio" name="question${index}" value="${idx}"> ${option}</li>`).join("")}
+     </ul>
+   `;
+   quizQuestionsContainer.appendChild(questionElement);
+ });
+
+ // Calculate and display quiz score
+ const submitQuizButton = document.getElementById("submit-quiz");
+ submitQuizButton.addEventListener("click", () => {
+   let score = 0;
+   const feedbackContainer = document.getElementById("quiz-feedback");
+   const selectedAnswers = document.querySelectorAll('input[type="radio"]:checked');
+   selectedAnswers.forEach((answer, index) => {
+     const questionIndex = parseInt(answer.name.replace("question", ""));
+     const question = quizQuestions[questionIndex];
+     if (parseInt(answer.value) === question.correctAnswer) {
+       score++;
+       feedbackContainer.innerHTML += `<p>Question ${index + 1}: Correct</p>`;
+     } else {
+       feedbackContainer.innerHTML += `<p>Question ${index + 1}: Incorrect</p>`;
+     }
+   });
+   const scoreDisplay = document.getElementById("quiz-score");
+   scoreDisplay.textContent = `${score}/${quizQuestions.length}`;
+   document.getElementById("quiz").style.display = "none";
+   document.getElementById("score-and-answers").style.display = "block";
+ });
+
+ // Try again button functionality
+ const tryAgainButton = document.getElementById("try-again");
+ tryAgainButton.addEventListener("click", () => {
+   location.reload();
+ });
+</script>
+
+</body>
+</html>
